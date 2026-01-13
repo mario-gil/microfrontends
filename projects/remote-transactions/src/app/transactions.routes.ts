@@ -26,6 +26,33 @@ export const TRANSACTIONS_ROUTES: Routes = [
     pathMatch: 'full'
   },
   {
+    // IMPORTANTE: Esto captura rutas como /transactions/detail
+    path: 'transactions',
+    children: [
+      {
+        path: 'list',
+        component: TransactionListComponent
+      },
+      {
+        path: 'detail',
+        component: TransactionDetailComponent
+      },
+      {
+        path: 'detail/:id',
+        component: TransactionDetailComponent
+      },
+      {
+        path: '',
+        redirectTo: 'list',
+        pathMatch: 'full'
+      },
+      {
+        path: '**',
+        component: TransactionErrorComponent
+      }
+    ]
+  },
+  {
     path: '**',
     component: TransactionErrorComponent,
     data: { title: 'Error en Transacciones' }

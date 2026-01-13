@@ -13,7 +13,7 @@
     </div>
 
     <div class="detail-row">
-      <strong>Descripción:</strong>
+      <strong>Concepto:</strong>
       <span>{{ transaction.description }}</span>
     </div>
 
@@ -23,7 +23,7 @@
     </div>
 
     <div class="detail-row">
-      <strong>Monto:</strong>
+      <strong>Importe:</strong>
       <span [class]="getAmountClass(transaction.amount)">
         {{ transaction.amount | currency:'EUR':'symbol':'1.2-2' }}
       </span>
@@ -47,44 +47,10 @@
     </div>
   </div>
 
-  <!-- Información adicional -->
-  <div class="additional-info" *ngIf="transaction">
-    <h3>Información Adicional</h3>
-    <div class="info-grid">
-      <div class="info-item">
-        <h4>Referencia</h4>
-        <p>TXN-{{ transaction.id.toString().padStart(6, '0') }}</p>
-      </div>
-      <div class="info-item">
-        <h4>Tipo de Operación</h4>
-        <p>{{ transaction.amount < 0 ? 'Débito' : 'Crédito' }}</p>
-      </div>
-      <div class="info-item">
-        <h4>Procesado el</h4>
-        <p>{{ transaction.date | date:'dd/MM/yyyy' }}</p>
-      </div>
-    </div>
-  </div>
-
   <!-- Botones de acción -->
   <div class="action-buttons">
     <button routerLink="/transactions/list">
       ← Volver al Listado
-    </button>
-
-    <button class="action-btn" (click)="performAction('repeat')"
-            *ngIf="transaction?.status === 'completed'">
-      Repetir Transacción
-    </button>
-
-    <button class="action-btn" (click)="performAction('cancel')"
-            *ngIf="transaction?.status === 'pending'">
-      Cancelar Transacción
-    </button>
-
-    <button class="action-btn" (click)="performAction('dispute')"
-            *ngIf="transaction?.status === 'failed'">
-      Disputar Transacción
     </button>
   </div>
 </div>

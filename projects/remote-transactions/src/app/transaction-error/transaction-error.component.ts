@@ -22,11 +22,7 @@ export class TransactionErrorComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back();
-  }
-
-  goToList(): void {
-    // Navegar dentro del mismo módulo
     this.router.navigate(['list'], { relativeTo: this.route.root });
   }
+
 }

@@ -55,26 +55,6 @@ export class TransactionDetailComponent implements OnInit {
       recipient: 'Amazon EU Sarl',
       account: 'VISA **** 1234'
     },
-    {
-      id: 4,
-      date: new Date('2024-01-12T16:45:00'),
-      description: 'Recibo de luz',
-      amount: -65.30,
-      status: 'completed',
-      category: 'Facturas',
-      recipient: 'Endesa Energía',
-      account: 'Domiciliación'
-    },
-    {
-      id: 5,
-      date: new Date('2024-01-11T11:00:00'),
-      description: 'Retiro cajero',
-      amount: -100.00,
-      status: 'failed',
-      category: 'Efectivo',
-      recipient: 'Cajero 12345',
-      account: 'Tarjeta débito'
-    }
   ];
 
   constructor(
@@ -153,23 +133,5 @@ export class TransactionDetailComponent implements OnInit {
     this.router.navigate(['/transactions/list']);
   }
 
-  // Método para simular una acción en la transacción
-  performAction(action: string): void {
-    switch(action) {
-      case 'repeat':
-        console.log('Repitiendo transacción:', this.transaction?.id);
-        // Lógica para repetir transacción
-        break;
-      case 'cancel':
-        if (this.transaction && this.transaction.status === 'pending') {
-          console.log('Cancelando transacción:', this.transaction.id);
-          // Lógica para cancelar
-        }
-        break;
-      case 'dispute':
-        console.log('Disputando transacción:', this.transaction?.id);
-        // Lógica para disputa
-        break;
-    }
-  }
+
 }
