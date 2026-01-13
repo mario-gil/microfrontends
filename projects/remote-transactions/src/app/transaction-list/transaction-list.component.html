@@ -1,0 +1,34 @@
+<div class="transaction-list">
+  <h2>Historial de Transacciones</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Descripción</th>
+        <th>Monto</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ transaction.date | date:'dd/MM/yyyy' }}</td>
+        <td>{{ transaction.description }}</td>
+        <td [class.negative]="transaction.amount < 0">
+          {{ transaction.amount | currency:'EUR' }}
+        </td>
+        <td>
+          <span class="status-badge" [class]="transaction.status">
+            {{ transaction.status }}
+          </span>
+        </td>
+        <td>
+          <button (click)="viewDetail(transaction.id)">
+            Ver Detalle
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

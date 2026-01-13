@@ -1,0 +1,18 @@
+<div class="layout-container">
+      <!-- Breadcrumbs dinámicos -->
+      <nav class="breadcrumbs" *ngIf="showBreadcrumbs">
+        <a routerLink="/">Inicio</a>
+        <span *ngIf="currentSection"> / {{ currentSection }}</span>
+      </nav>
+
+      <!-- Área de contenido principal -->
+      <div class="content-area">
+        <router-outlet></router-outlet>
+      </div>
+
+      <!-- Indicador de carga para módulos remotos -->
+      <div class="remote-loading" *ngIf="isLoadingRemote">
+        <div class="spinner"></div>
+        <p>Cargando módulo...</p>
+      </div>
+    </div>

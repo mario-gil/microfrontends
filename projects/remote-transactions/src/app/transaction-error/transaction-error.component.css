@@ -1,0 +1,63 @@
+.transaction-error-container {
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+    }
+    .error-card {
+      background: #fff3cd;
+      border: 2px solid #ffeaa7;
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .error-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    .error-code {
+      font-family: monospace;
+      background: #f8f9fa;
+      padding: 5px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin: 10px 0;
+    }
+    .error-details {
+      background: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+      text-align: left;
+    }
+    .error-actions {
+      margin: 25px 0;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+    .btn-back {
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .help-section {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      color: #666;
+    }

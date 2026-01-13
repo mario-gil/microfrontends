@@ -1,0 +1,90 @@
+<div class="transaction-detail">
+  <h2>Detalle de Transacción</h2>
+
+  <div class="detail-card" *ngIf="transaction">
+    <div class="detail-row">
+      <strong>ID de Transacción:</strong>
+      <span>#{{ transaction.id }}</span>
+    </div>
+
+    <div class="detail-row">
+      <strong>Fecha y Hora:</strong>
+      <span>{{ formatDate(transaction.date) }}</span>
+    </div>
+
+    <div class="detail-row">
+      <strong>Descripción:</strong>
+      <span>{{ transaction.description }}</span>
+    </div>
+
+    <div class="detail-row">
+      <strong>Categoría:</strong>
+      <span>{{ transaction.category || 'No especificada' }}</span>
+    </div>
+
+    <div class="detail-row">
+      <strong>Monto:</strong>
+      <span [class]="getAmountClass(transaction.amount)">
+        {{ transaction.amount | currency:'EUR':'symbol':'1.2-2' }}
+      </span>
+    </div>
+
+    <div class="detail-row">
+      <strong>Estado:</strong>
+      <span class="status-badge" [class]="getStatusColor(transaction.status)">
+        {{ transaction.status | titlecase }}
+      </span>
+    </div>
+
+    <div class="detail-row" *ngIf="transaction.recipient">
+      <strong>Destinatario:</strong>
+      <span>{{ transaction.recipient }}</span>
+    </div>
+
+    <div class="detail-row" *ngIf="transaction.account">
+      <strong>Cuenta/Crédito:</strong>
+      <span>{{ transaction.account }}</span>
+    </div>
+  </div>
+
+  <!-- Información adicional -->
+  <div class="additional-info" *ngIf="transaction">
+    <h3>Información Adicional</h3>
+    <div class="info-grid">
+      <div class="info-item">
+        <h4>Referencia</h4>
+        <p>TXN-{{ transaction.id.toString().padStart(6, '0') }}</p>
+      </div>
+      <div class="info-item">
+        <h4>Tipo de Operación</h4>
+        <p>{{ transaction.amount < 0 ? 'Débito' : 'Crédito' }}</p>
+      </div>
+      <div class="info-item">
+        <h4>Procesado el</h4>
+        <p>{{ transaction.date | date:'dd/MM/yyyy' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botones de acción -->
+  <div class="action-buttons">
+    <button routerLink="/transactions/list">
+      ← Volver al Listado
+    </button>
+
+    <button class="action-btn" (click)="performAction('repeat')"
+            *ngIf="transaction?.status === 'completed'">
+      Repetir Transacción
+    </button>
+
+    <button class="action-btn" (click)="performAction('cancel')"
+            *ngIf="transaction?.status === 'pending'">
+      Cancelar Transacción
+    </button>
+
+    <button class="action-btn" (click)="performAction('dispute')"
+            *ngIf="transaction?.status === 'failed'">
+      Disputar Transacción
+    </button>
+  </div>
+</div>

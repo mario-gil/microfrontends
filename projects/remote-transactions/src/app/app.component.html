@@ -1,0 +1,30 @@
+<!-- Remote: Solo contenido específico del módulo -->
+<!-- NO tiene header ni footer, eso lo maneja el shell -->
+
+<div class="transactions-app">
+  <!--
+    IMPORTANTE: Este componente solo se muestra cuando se accede
+    directamente al remote (puerto 4201).
+    Cuando se carga desde el shell, se muestra solo el contenido de las rutas.
+  -->
+
+  <div *ngIf="isStandaloneMode" class="standalone-warning">
+    <h2>⚠️ Módulo de Transacciones</h2>
+    <p>Estás viendo el módulo de transacciones de forma independiente.</p>
+    <p>En producción, este módulo se carga dentro de la aplicación principal.</p>
+
+    <nav class="standalone-nav">
+      <a routerLink="/" routerLinkActive="active">Inicio Remote</a>
+      <a routerLink="/list" routerLinkActive="active">Listado</a>
+      <a routerLink="/detail" routerLinkActive="active">Detalle</a>
+    </nav>
+  </div>
+
+  <!--
+    Router outlet para las rutas del módulo de transacciones.
+    Cuando se carga desde el shell, solo se muestra esto.
+  -->
+  <div class="transactions-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

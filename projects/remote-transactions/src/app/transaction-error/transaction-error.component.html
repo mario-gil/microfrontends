@@ -1,0 +1,26 @@
+<div class="transaction-error-container">
+      <div class="error-card">
+        <div class="error-icon">⚠️</div>
+        <h2>Error en Operaciones Bancarias</h2>
+        <p class="error-code">Código: TRANS-404</p>
+        <p>La funcionalidad solicitada no está disponible dentro del módulo de transacciones.</p>
+
+        <div class="error-details" *ngIf="currentPath">
+          <p><strong>Ruta no encontrada:</strong> {{ currentPath }}</p>
+        </div>
+
+        <div class="error-actions">
+          <button (click)="goBack()" class="btn-back">
+            ← Volver atrás
+          </button>
+          <button (click)="goToList()" class="btn-primary">
+            Ir al Listado de Transacciones
+          </button>
+        </div>
+
+        <div class="help-section">
+          <p>¿Necesitas ayuda?</p>
+          <p>Contacta con el departamento de operaciones: <strong>operaciones@banco.com</strong></p>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,51 @@
+<div class="global-error-container">
+      <div class="error-content">
+        <div class="error-header">
+          <h1>🚫 Error del Sistema</h1>
+          <p class="error-subtitle">Página no encontrada</p>
+        </div>
+
+        <div class="error-body">
+          <div class="error-card">
+            <h3>Error 404 - Ruta no válida</h3>
+            <p>La dirección que has intentado visitar no existe en nuestro sistema.</p>
+
+            <div class="error-details" *ngIf="invalidPath">
+              <p><strong>Ruta inválida:</strong> <code>{{ invalidPath }}</code></p>
+            </div>
+
+            <div class="error-explanation">
+              <p>Posibles causas:</p>
+              <ul>
+                <li>La dirección contiene errores tipográficos</li>
+                <li>La página ha sido movida o eliminada</li>
+                <li>Estás intentando acceder a un recurso no disponible</li>
+              </ul>
+            </div>
+
+            <div class="navigation-options">
+              <h4>¿A dónde quieres ir?</h4>
+              <div class="option-buttons">
+                <button (click)="goHome()" class="btn-primary">
+                  🏠 Inicio
+                </button>
+                <button (click)="goToTransactions()" class="btn-secondary">
+                  💰 Transacciones
+                </button>
+                <button (click)="goBack()" class="btn-outline">
+                  ↩️ Volver atrás
+                </button>
+              </div>
+            </div>
+
+            <div class="support-section">
+              <p>Si crees que esto es un error, contacta con soporte técnico:</p>
+              <div class="contact-info">
+                <p>📞 <strong>900 123 456</strong></p>
+                <p>✉️ <strong>soporte@bancodigital.com</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
