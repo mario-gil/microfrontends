@@ -11,7 +11,12 @@ module.exports = withModuleFederationPlugin({
     ...shareAll({
       singleton: true,
       strictVersion: false,
-      requiredVersion: 'auto'
+      requiredVersion: 'auto',
     }),
+    '@bank/shared-data': {
+      singleton: true,
+      strictVersion: false,
+      requiredVersion: 'auto'
+    }
   },
 });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { UserService } from 'projects/shared-data/src/lib/services/user.service';
 
 interface Transaction {
   id: number;
@@ -67,7 +68,8 @@ export class TransactionDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -144,27 +146,22 @@ export class TransactionDetailComponent implements OnInit {
    confirmTransfer(): void {
     if (!this.transaction) return;
 
-    // Crear datos del evento
-    const transferData: TransferEventData = {
-      amount: Math.abs(this.transaction.amount), // Valor absoluto
-      description: this.transaction.description,
-      recipient: this.transaction.recipient || 'Desconocido',
-      transactionId: this.transaction.id,
-      timestamp: new Date()
-    };
+    const amount = Math.abs(this.transaction.amount);
 
-    // Emitir Custom Event al navegador
-    const transferEvent = new CustomEvent('bank-transfer-confirmed', {
-      detail: transferData,
-      bubbles: true,
-      cancelable: true
-    });
+    // DEBUG: Verificar el servicio
+    console.log('UserService en remote:', this.userService);
+    console.log('Saldo antes:', this.userService.getUser().balance);
 
-    // Dispatch en window
-    window.dispatchEvent(transferEvent);
+    // Actualizar saldo
+    this.userService.updateBalance(-amount);
 
-    console.log('Evento emitido:', transferData);
+    // DEBUG: Verificar después
+    console.log('Saldo después:', this.userService.getUser().balance);
 
+    // También verificar si hay un BehaviorSubject
+    if (this.userService['userSubject']) {
+      console.log('BehaviorSubject presente');
+    }
   }
 
 }
