@@ -47,10 +47,13 @@
     </div>
   </div>
 
-  <!-- Botones de acción -->
   <div class="action-buttons">
     <button routerLink="/transactions/list">
       ← Volver al Listado
+    </button>
+
+    <button class="btn-confirm" (click)="confirmTransfer()">
+      ✅ Confirmar Transferencia
     </button>
   </div>
 </div>

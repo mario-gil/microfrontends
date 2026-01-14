@@ -13,6 +13,14 @@ interface Transaction {
   account?: string;
 }
 
+interface TransferEventData {
+  amount: number;
+  description: string;
+  recipient: string;
+  transactionId: number;
+  timestamp: Date;
+}
+
 @Component({
   selector: 'app-transaction-detail',
   templateUrl: './transaction-detail.component.html',
@@ -133,5 +141,30 @@ export class TransactionDetailComponent implements OnInit {
     this.router.navigate(['/transactions/list']);
   }
 
+   confirmTransfer(): void {
+    if (!this.transaction) return;
+
+    // Crear datos del evento
+    const transferData: TransferEventData = {
+      amount: Math.abs(this.transaction.amount), // Valor absoluto
+      description: this.transaction.description,
+      recipient: this.transaction.recipient || 'Desconocido',
+      transactionId: this.transaction.id,
+      timestamp: new Date()
+    };
+
+    // Emitir Custom Event al navegador
+    const transferEvent = new CustomEvent('bank-transfer-confirmed', {
+      detail: transferData,
+      bubbles: true,
+      cancelable: true
+    });
+
+    // Dispatch en window
+    window.dispatchEvent(transferEvent);
+
+    console.log('Evento emitido:', transferData);
+
+  }
 
 }

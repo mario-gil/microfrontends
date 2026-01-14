@@ -163,6 +163,23 @@ button[routerLink]:hover {
   font-size: 16px;
 }
 
+.btn-confirm {
+  background-color: #28a745 !important;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-confirm:hover {
+  background-color: #218838 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .detail-row {

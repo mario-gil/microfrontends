@@ -7,6 +7,9 @@ import { HomeComponent } from './home/home.component';
 import { GlobalErrorComponent } from './global-error/global-error.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
+import { CommonModule } from '@angular/common';
+import { NotificationComponent } from './notification/notification.component';
+import { NotificationService } from './services/notification.service';
 
 // Función simple de carga del módulo remote
 const routes: Routes = [
@@ -34,16 +37,18 @@ const routes: Routes = [
     HomeComponent,
     GlobalErrorComponent,
     LayoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     RouterModule.forRoot(routes, {
       onSameUrlNavigation: 'reload',
       paramsInheritanceStrategy: 'always'
     })
   ],
-  providers: [],
+  providers: [NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

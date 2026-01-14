@@ -1,0 +1,21 @@
+<div class="notifications-container">
+  <div *ngFor="let notification of notifications"
+       [class]="getNotificationClass(notification.type)"
+       class="notification">
+
+    <div class="notification-header">
+      <span class="notification-title">{{ notification.title }}</span>
+      <button class="notification-close" (click)="closeNotification(notification.id)">
+        ×
+      </button>
+    </div>
+
+    <div class="notification-body">
+      {{ notification.message }}
+    </div>
+
+    <div class="notification-time">
+      {{ notification.timestamp | date:'HH:mm:ss' }}
+    </div>
+  </div>
+</div>
